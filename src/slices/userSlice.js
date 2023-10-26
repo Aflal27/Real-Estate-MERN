@@ -1,0 +1,107 @@
+import {createSlice} from '@reduxjs/toolkit'
+
+const userSlice = createSlice({
+    name:'user',
+    initialState:{
+        userData:{},
+        loading:false,
+        error:null
+    },
+    reducers:{
+        userRequset(state,action){
+            return{
+                ...state,
+                loading:true
+            }
+        },
+        userSuccess(state,action){
+            return{
+                ...state,
+                userData:action.payload,
+                loading:false
+            }
+        },
+        userFail(state,action){
+            return{
+                ...state,
+                loading:false,
+                error:action.payload.message
+            }
+        },
+        updateUserRequset(state,action){
+            return{
+                ...state,
+                loading:true
+            }
+        },
+        updateUserSuccess(state,action){
+            return{
+                ...state,
+                userData:action.payload,
+                loading:false
+            }
+        },updateUserFail(state,action){
+            return{
+                ...state,
+                error:action.payload,
+                loading:false,
+            }
+        },
+        deleteUserRequset(state,action){
+            return{
+                ...state,
+                loading:true
+            }
+        },
+        deleteUserSuccess(state,action){
+            return{
+                ...state,
+                userData:null,
+                loading:false
+            }
+        },deleteUserFail(state,action){
+            return{
+                ...state,
+                error:action.payload,
+                loading:false,
+            }
+        },
+        signOutUserRequset(state,action){
+            return{
+                ...state,
+                loading:true
+            }
+        },
+        signOutUserSuccess(state,action){
+            return{
+                ...state,
+                userData:null,
+                loading:false
+            }
+        },signOutUserFail(state,action){
+            return{
+                ...state,
+                error:action.payload,
+                loading:false,
+            }
+        },
+        
+    }
+})
+
+const {reducer,actions} = userSlice
+export const {
+    userFail,
+    userRequset,
+    userSuccess,
+    updateUserRequset,
+    updateUserSuccess,
+    updateUserFail,
+    deleteUserFail,
+    deleteUserRequset,
+    deleteUserSuccess,
+    signOutUserFail,
+    signOutUserRequset,
+    signOutUserSuccess
+} = actions
+export default reducer
